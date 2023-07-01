@@ -1,0 +1,12 @@
+.app-Button {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 4px;
+  background-image: linear-gradient(#efefef, #dcdcdc);
+  color: black;
+  cursor: pointer;
+}
+
+.app-Button:hover {
+  background-image: linear-gradient(#fcfcfc, #efefef);
+}

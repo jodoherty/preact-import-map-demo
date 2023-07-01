@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <link rel="stylesheet" href="/app/index.css" type="text/css" />
+  </head>
+  <body>
+    <div id="unsupported-browser" style="display: none">
+      <p>
+        The browser you are using does not support the features required for
+        this website.
+      </p>
+    </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "preact": "/node_modules/preact/dist/preact.module.js",
+          "preact/compat": "/node_modules/preact/compat/dist/compat.module.js",
+          "preact/hooks": "/node_modules/preact/hooks/dist/hooks.module.js",
+          "preact-router": "/node_modules/preact-router/dist/preact-router.module.js",
+          "htm/preact": "/node_modules/htm/preact/standalone.module.js",
+
+          "preact/debug": "/node_modules/preact/debug/dist/debug.module.js",
+          "preact/devtools": "/node_modules/preact/devtools/dist/devtools.module.js"
+        }
+      }
+    </script>
+    <script>
+      function displayUnsupportedBrowserWarning() {
+        document.getElementById("unsupported-browser").style.display = "block";
+      }
+    </script>
+    <script type="module">
+      import("preact")
+        .then(() => {
+          document.getElementById("unsupported-browser").remove();
+        })
+        .catch((err) => displayUnsupportedBrowserWarning());
+    </script>
+    <script type="module">
+      import "/app/index.js";
+    </script>
+    <script type="module">
+      // if development
+      import "preact/debug";
+    </script>
+    <script type="nomodule">
+      displayUnsupportedBrowserWarning();
+    </script>
+  </body>
+</html>
